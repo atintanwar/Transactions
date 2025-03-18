@@ -1,11 +1,12 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
-import './styles.css';
+import "./styles.css";
+import TransactionCard from "../../TransactionCard";
 
 type ContentWidthContainerProps = {
   children: ReactNode;
   className?: string;
-  size?: 'normal' | 'small' | 'slim' | 'wide';
+  size?: "normal" | "small" | "slim" | "wide";
 };
 
 /*
@@ -15,12 +16,11 @@ type ContentWidthContainerProps = {
 
 const ContentWidthContainer = ({
   children,
-  className = '',
+  className = "",
 }: ContentWidthContainerProps) => (
-  <section
-    className={`c-container-content-width ${className}`}
-  >
+  <section className={`c-container-content-width ${className}`}>
     {children}
+    <TransactionCard></TransactionCard>
   </section>
 );
 
