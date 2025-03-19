@@ -1,12 +1,21 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchData } from "../../actions/actions";
 import "./styles.css";
 
-const Toolbar = () => {
-  const [active, setActive] = useState("ALL");
+const Toolbar: React.FC = () => {
+  const [active, setActive] = useState<string>("ALL");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchData("ALL"));
+  }, []);
 
-  const handleClick = (e) => {
-    console.log(e.currentTarget.dataset.id);
-    setActive(e.currentTarget.dataset.id);
+  const handleClick = (e: React.MouseEvent) => {
+    const id = e.currentTarget.dataset.id;
+    if (id) {
+      setActive(id);
+      dispatch(fetchData(id));
+    }
   };
 
   return (

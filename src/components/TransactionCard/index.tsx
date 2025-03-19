@@ -1,8 +1,27 @@
 import "./styles.css";
 
-const TransactionCard = ({ data }) => {
-  const { logoUrl, transactionTitle, suburb, shortCategory, amount, cashflow } =
-    data;
+interface Data {
+  logoUrl: string;
+  transactionTitle: string;
+  suburb?: string;
+  shortCategory?: string;
+  cashflow: "inflow" | "outflow";
+  amount: number;
+}
+
+interface TransactionCardProps {
+  data: Data;
+}
+
+const TransactionCard = ({ data }: TransactionCardProps) => {
+  const {
+    logoUrl,
+    transactionTitle,
+    suburb = "",
+    shortCategory = "",
+    amount,
+    cashflow,
+  } = data;
   const dynamicDetail =
     suburb && shortCategory
       ? `${suburb} | ${shortCategory}`
@@ -61,16 +80,3 @@ const TransactionCard = ({ data }) => {
 };
 
 export default TransactionCard;
-
-// a logo (the "logoUrl" property)
-// a title (the "transactionTitle" property)
-// a subtitle
-// the "suburb" property, if it has a value
-// the "shortCategory" property, if it has a value
-// if both properties have values, display a separator between them
-// an amount (the "amount" property)
-// styled differently based on the "cashflow" property
-// when cashflow == "inflow"
-// prefix with green "+"
-// when cashflow == "outflow"
-// prefix with red "-"

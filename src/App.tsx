@@ -6,6 +6,8 @@ import "@fontsource/source-sans-pro/700.css";
 import ContentWidthContainer from "./components/layout/ContentWidthContainer";
 
 import "./App.css";
+import Toolbar from "./components/Toolbar";
+import TransactionList from "./components/TransactionList";
 
 /*
   To reference icons:
@@ -23,12 +25,8 @@ const App = () => {
     <ContentWidthContainer>
       <main className="content">
         <h1>Code Challenge</h1>
-        <section>
-          <p>Toolbar</p>
-        </section>
-        <section>
-          <p>Transaction List</p>
-        </section>
+        <Toolbar></Toolbar>
+        <TransactionList></TransactionList>
       </main>
     </ContentWidthContainer>
   );
